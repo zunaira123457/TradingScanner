@@ -1,0 +1,14 @@
+{
+  "asOfDate": "2026-08-18",
+  "trades": [],
+  "equityCurve": [
+    {
+      "date": "2026-08-19T00:00:00.000Z",
+      "cash": 10000,
+      "equity": 10000,
+      "openPositionsCount": 0,
+      "exposurePct": 0
+    }
+  ],
+  "aiCommentaryByTradeKey": {}
+}

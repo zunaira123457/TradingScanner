@@ -1,0 +1,37 @@
+{
+  "momentum_continuation": {
+    "baseline": {
+      "trades": 226,
+      "profitFactor": 1.14,
+      "sharpe": 0.38,
+      "cagr": 3.71,
+      "expectancyPerTrade": 120.70,
+      "totalReturnPct": 27.33,
+      "medianStockPnlNegative": true,
+      "pctStocksProfitable": 40,
+      "concentrationNote": "Removing the top 3 winning stocks (of 70 that traded, out of 81 in the universe) reduces total return to approximately breakeven; removing the top 5 makes the strategy a net loser on every metric. 60% of traded stocks had negative expectancy.",
+      "datasetDescription": "81-stock hand-curated US large/mid-cap equity universe, 2020-01-02 to 2026-08-19. A single in-sample backtest window on a survivorship-biased, non-random universe — see PHASE_4_5_REPORT.md and MOMENTUM_DIAGNOSTICS_REPORT.md. Not yet validated out-of-sample (cross-universe replication and temporal holdout are the top-ranked next experiments)."
+    },
+    "regimes": {
+      "bullish": {
+        "trades": 82,
+        "winRatePct": 30.5,
+        "profitFactor": null,
+        "note": "Largest regime bucket by trade count. Approximately breakeven-to-negative in aggregate per the Phase 4.5 report; no feature reached an interesting effect size separating winners from losers in this regime in the diagnostics pass."
+      },
+      "strong_bullish": {
+        "trades": 57,
+        "winRatePct": 42.1,
+        "profitFactor": null,
+        "note": "Second-largest regime bucket; the highest win rate of the three regimes with meaningful trade counts."
+      },
+      "neutral": {
+        "trades": 52,
+        "winRatePct": 38.5,
+        "profitFactor": null,
+        "note": "The most differentiated regime in the diagnostics pass: winners were less overbought, better relative-strength performers, and further from recent highs than losers (multiple features at Cohen's d 0.5-1.2). Still exploratory/in-sample."
+      }
+    },
+    "tickers": {}
+  }
+}

@@ -1,0 +1,50 @@
+# Trading Desk — production stack for a single Linux server (VPS).
+#   web      Next.js dashboard + alert/notification watcher
+#   scanner  AI scanner API (internal only, never exposed to the internet)
+#   caddy    HTTPS reverse proxy with automatic Let's Encrypt certificates
+# Setup: see DEPLOY.md.
+services:
+  web:
+    build: ./frontend
+    env_file: ./deploy/web.env
+    environment:
+      AI_SCANNER_BASE_URL: http://scanner:4000
+      DATA_DIR: /data
+    volumes:
+      - web-data:/data
+    depends_on:
+      - scanner
+    restart: unless-stopped
+
+  scanner:
+    build: ./backend
+    env_file: ./deploy/scanner.env
+    environment:
+      SCANNER_PORT: "4000"
+      CACHE_DIR: /app/data/cache
+    volumes:
+      # Price cache + paper-trading log; seeded from the image on first start.
+      - scanner-data:/app/data
+    restart: unless-stopped
+
+  caddy:
+    image: caddy:2-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    environment:
+      DOMAIN: ${DOMAIN:?Set DOMAIN in .env next to docker-compose.yml}
+    volumes:
+      - ./deploy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+    depends_on:
+      - web
+    restart: unless-stopped
+
+volumes:
+  web-data:
+  scanner-data:
+  caddy-data:
+  caddy-config:

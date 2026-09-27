@@ -1,0 +1,43 @@
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+
+# Build output
+dist/
+build/
+
+# Data (cache, downloaded data, backtest results)
+data/cache/
+data/backtest-results/
+backend/.cache-test/
+*.db
+*.sqlite
+
+# Logs
+*.log
+npm-debug.log*
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Test coverage
+coverage/
+
+# Next.js (frontend/)
+.next/
+next-env.d.ts
+*.tsbuildinfo
+.vercel
+
+# Trading Desk runtime data (alerts, push subscriptions)
+.data/
+
+# Deployment secrets
+deploy/*.env
