@@ -10,7 +10,9 @@ const securityHeaders = [
 const nextConfig: NextConfig = {
   poweredByHeader: false,
   // Self-contained server bundle for the Docker image (see Dockerfile).
-  output: 'standalone',
+  // Vercel sets process.env.VERCEL=1 during its own builds — 'standalone'
+  // output breaks Vercel's serverless routing, so only use it for Docker.
+  output: process.env.VERCEL ? undefined : 'standalone',
   async headers() {
     return [
       { source: '/:path*', headers: securityHeaders },
