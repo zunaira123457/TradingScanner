@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd frontend && npm run build",
+  "installCommand": "cd frontend && npm install",
+  "outputDirectory": "frontend/.next/standalone",
+  "framework": "nextjs",
+  "env": {
+    "NEXT_PUBLIC_API_URL": {
+      "description": "API base URL"
+    }
+  }
+}
