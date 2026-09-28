@@ -1,5 +1,9 @@
-import { Dashboard } from '@/components/dashboard/Dashboard';
-
 export default function Home() {
-  return <Dashboard />;
+  return (
+    <div style={{ padding: '40px', fontFamily: 'sans-serif' }}>
+      <h1>🎉 Trading Scanner is Live!</h1>
+      <p>Your app is deployed at tradingscanner.org</p>
+      <p>Building dashboard component...</p>
+    </div>
+  );
 }
