@@ -1,9 +1,8 @@
-export default function Home() {
+export default function Page() {
   return (
-    <div style={{ padding: '40px', fontFamily: 'sans-serif' }}>
-      <h1>🎉 Trading Scanner is Live!</h1>
-      <p>Your app is deployed at tradingscanner.org</p>
-      <p>Building dashboard component...</p>
-    </div>
+    <main>
+      <h1>Trading Scanner</h1>
+      <p>App is live!</p>
+    </main>
   );
 }
