@@ -41,3 +41,4 @@ next-env.d.ts
 
 # Deployment secrets
 deploy/*.env
+.env*

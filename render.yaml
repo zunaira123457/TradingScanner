@@ -1,0 +1,29 @@
+# Render Blueprint for the AI scanner API (backend/). The Next.js dashboard
+# lives on Vercel and calls this service server-side via AI_SCANNER_BASE_URL.
+# Secrets marked `sync: false` are entered once in the Render dashboard.
+services:
+  - type: web
+    name: trading-scanner-api
+    runtime: docker
+    dockerfilePath: ./backend/Dockerfile
+    dockerContext: ./backend
+    # Starter keeps the service awake. Free instances sleep after 15 minutes,
+    # so the first dashboard visit after a quiet spell would show "not connected".
+    plan: starter
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: SCANNER_PORT
+        value: "10000"
+      - key: MARKET_DATA_PROVIDER
+        value: twelve-data
+      - key: TWELVE_DATA_REQUESTS_PER_MINUTE
+        value: "8"
+      - key: SCANNER_UNIVERSE
+        value: research81
+      - key: SCANNER_API_KEY
+        sync: false
+      - key: TWELVE_DATA_API_KEY
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false

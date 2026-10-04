@@ -1,0 +1,8 @@
+backend/data
+frontend/test-results
+frontend/playwright-report
+frontend/.next
+frontend/coverage
+frontend/.e2e-data
+frontend/.data
+node_modules
